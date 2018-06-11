@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-survey-monkey" version="0.0.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-survey-monkey" version="0.0.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>SurveyMonkey</name>
+    <description>Plugin to use the API of Survey Monkey</description>
+    <keywords>cordova,survey,surveymonkey</keywords>
     <js-module name="SurveyMonkey" src="www/SurveyMonkey.js">
         <clobbers target="cordova.plugins.SurveyMonkey" />
     </js-module>
@@ -15,6 +17,5 @@
         </config-file>
         <source-file src="src/android/SurveyMonkeySDK.java" target-dir="src/cordova/plugin/surveymonkey/SurveyMonkeySDK" />
         <framework custom="true" src="src/android/SurveyMonkey-sdk.gradle" type="gradleReference" />
-        
     </platform>
 </plugin>

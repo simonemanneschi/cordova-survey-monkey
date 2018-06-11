@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-survey-monkey",
   "version": "0.0.2",
-  "description": "Plugin para conectar el API de Survey Monkey",
+  "description": "Plugin to use the API of Survey Monkey",
   "repository": {
     "type": "git",
     "url": "git://github.com/maugonsal/cordova-survey-monkey.git"
