@@ -1,0 +1,22 @@
+{
+  "name": "cordova-plugin-survey-monkey",
+  "version": "0.0.2",
+  "description": "Plugin para conectar el API de Survey Monkey",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maugonsal/cordova-survey-monkey.git"
+  },
+  "homepage": "https://github.com/maugonsal/cordova-survey-monkey#readme",
+  "cordova": {
+    "id": "cordova-plugin-survey-monkey",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Mauricio Gonzalez Salcedo (CTO BAKIA SAS)",
+  "license": "MIT"
+}

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-survey-monkey" version="0.0.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SurveyMonkey</name>
+    <js-module name="SurveyMonkey" src="www/SurveyMonkey.js">
+        <clobbers target="cordova.plugins.SurveyMonkey" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="SurveyMonkeySDK">
+                <param name="android-package" value="cordova.plugin.surveymonkey.SurveyMonkeySDK" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+        <source-file src="src/android/SurveyMonkeySDK.java" target-dir="src/cordova/plugin/surveymonkey/SurveyMonkeySDK" />
+        <framework custom="true" src="src/android/SurveyMonkey-sdk.gradle" type="gradleReference" />
+        
+    </platform>
+</plugin>
