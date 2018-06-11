@@ -12,15 +12,15 @@ public class SurveyMonkeySDK extends CordovaPlugin {
     private SurveyMonkey s = new SurveyMonkey();
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("mostrarEncuesta")) {
+        if (action.equals("showSurvey")) {
             String hash_encuesta = args.getString(0);
             String id_user = args.getString(1);
-            this.mostrarEncuesta(hash_encuesta,id_user, callbackContext);
+            this.showSurvey(hash_encuesta,id_user, callbackContext);
             return true;
         }
         return false;
     }
-   private void mostrarEncuesta(String hash_encuesta,String id_user, CallbackContext callbackContext) {
+   private void showSurvey(String hash_encuesta,String id_user, CallbackContext callbackContext) {
         if (hash_encuesta != null && hash_encuesta.length() > 0) {
             final CordovaPlugin that = this;
             final String hash_encuesta_that = hash_encuesta;

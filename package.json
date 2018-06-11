@@ -1,6 +1,6 @@
 {
-  "name": "cordova-plugin-survey-monkey",
-  "version": "0.0.2",
+  "name": "cordova-survey-monkey",
+  "version": "0.0.5",
   "description": "Plugin to use the API of Survey Monkey",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "homepage": "https://github.com/maugonsal/cordova-survey-monkey#readme",
   "cordova": {
-    "id": "cordova-plugin-survey-monkey",
+    "id": "cordova-survey-monkey",
     "platforms": [
       "android"
     ]
