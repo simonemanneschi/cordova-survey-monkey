@@ -21,8 +21,13 @@ cordova plugin add https://github.com/maugonsal/cordova-survey-monkey
 ```javascript
 //HASH OF THE SURVEY
 var hash_survey = "XGF123";
-//SEND CUSTOM VARIABLE
-var email_user = "example@demo.com";
+//SEND CUSTOM VARIABLE AS JSON STRING
+var json_vars = {email:'mauricio@bakia.co'};
 //SHOW SURVEY
-cordova.plugins.SurveyMonkey.showSurvey(hash_survey,email_user);
+cordova.plugins.SurveyMonkey.showSurvey(hash_survey,JSON.stringify(json_vars),function(answers){
+    console.log(answers)
+},function(error){
+    console.log(error)
+}
+);
 ```
