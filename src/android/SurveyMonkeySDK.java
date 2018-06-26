@@ -57,7 +57,14 @@ public class SurveyMonkeySDK extends CordovaPlugin {
                 }
             } else {
                 SMError e = (SMError) intent.getSerializableExtra("smError");
-                this.callbackContext.error(e.getDescription());
+                try {
+                    JSONObject errorResponse = new JSONObject();
+                    errorResponse.put("errorCode", e.errorCode);
+                    errorResponse.put("description", e.description);
+                    this.callbackContext.error(errorResponse);
+                } catch (JSONException error) {
+                    this.callbackContext.error(error.getMessage());
+                }
             }
         }
     }

@@ -1,6 +1,6 @@
 {
   "name": "cordova-survey-monkey",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Plugin to use the API of Survey Monkey",
   "repository": {
     "type": "git",
