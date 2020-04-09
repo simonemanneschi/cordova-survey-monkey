@@ -2,5 +2,5 @@ repositories {
 }
 
 dependencies {
-  compile 'com.surveymonkey:surveymonkey-android-sdk:1.0.6'
+  compile 'com.surveymonkey:surveymonkey-android-sdk:2.0.0'
 }
