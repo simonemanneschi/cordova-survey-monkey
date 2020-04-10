@@ -22,7 +22,7 @@
 #import <Cordova/CDVPlugin.h>
 #import <SurveyMonkeyiOSSDK/SurveyMonkeyiOSSDK.h>
 
-@interface CDVSurveyMonkey : CDVPlugin
+@interface CDVSurveyMonkey : CDVPlugin<SMFeedbackDelegate>
 
 - (void)showSurvey:(CDVInvokedUrlCommand*)command;
 @property (nonatomic, strong) SMFeedbackViewController * feedbackController;

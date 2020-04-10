@@ -21,26 +21,48 @@
 
 @implementation CDVSurveyMonkey
 
+CDVPluginResult* pluginResult = nil;
+CDVInvokedUrlCommand* thisCommand = nil;
 - (void)showSurvey:(CDVInvokedUrlCommand*)command
 {
-    CDVPluginResult* pluginResult = nil;
-    NSString* action = [command.arguments objectAtIndex:0];
-
-    _feedbackController = [[SMFeedbackViewController alloc] initWithSurvey:{"BNMFDGY"}];
+    thisCommand = command;
+    NSString* surveyHash = [command.arguments objectAtIndex:0];
+    if(sizeof(command.arguments)>1)
+    {
+        NSString* surveyVariables = [command.arguments objectAtIndex:1];
+        NSError *jsonError;
+        NSData *objectData = [surveyVariables dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                              options:NSJSONReadingMutableContainers
+                                                error:&jsonError];
+        
+        _feedbackController = [[SMFeedbackViewController alloc] initWithSurvey:surveyHash andCustomVariables:json];
+    }
+    else
+    {
+        _feedbackController = [[SMFeedbackViewController alloc] initWithSurvey:surveyHash];
+    }
+    
     _feedbackController.delegate = self;
+    
+    [_feedbackController presentFromViewController:self.viewController animated:YES completion:nil];
+}
 
-    if (action != nil && [action length] > 0) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:action];
-    } else {
+
+- (void)respondentDidEndSurvey:(SMRespondent *)respondent error:(NSError *)error {
+    NSLog(@"Received response");
+    if (respondent != nil) {
+        NSDictionary *jsDict = [respondent toJson];
+        NSData *jsonData2 = [NSJSONSerialization dataWithJSONObject:jsDict    options:NSJSONWritingPrettyPrinted error:&error];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData2 encoding:NSUTF8StringEncoding];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:jsonString];
+    }
+    else {
+      NSLog(@"%@", error.description);
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
-
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
     
-    //_feedbackController = [[SMFeedbackViewController alloc] initWithSurvey:{SAMPLE_SURVEY_HASH} andCustomVariables:{SAMPLE_CUSTOM_VARIABLES_DICTIONARY}];
-
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:thisCommand.callbackId];
 }
 
 @end
-
