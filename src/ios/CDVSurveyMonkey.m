@@ -19,13 +19,7 @@
 
 #import "CDVSurveyMonkey.h"
 
-#define DIALOG_TYPE_ALERT @"alert"
-#define DIALOG_TYPE_PROMPT @"prompt"
-
-static void soundCompletionCallback(SystemSoundID ssid, void* data);
-static NSMutableArray *alertList = nil;
-
-@implementation Echo
+@implementation CDVSurveyMonkey
 
 - (void)showSurvey:(CDVInvokedUrlCommand*)command
 {
