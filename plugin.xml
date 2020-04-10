@@ -18,4 +18,22 @@
         <source-file src="src/android/SurveyMonkeySDK.java" target-dir="src/cordova/plugin/surveymonkey/SurveyMonkeySDK" />
         <framework custom="true" src="src/android/SurveyMonkey-sdk.gradle" type="gradleReference" />
     </platform>
+        <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="SurveyMonkeySDK">
+                <param name="ios-package" value="CDVSurveyMonkey"/>
+            </feature>
+        </config-file>
+        <header-file src="src/ios/CDVSurveyMonkey.h" />
+        <source-file src="src/ios/CDVSurveyMonkey.m" />
+        <!-- survey monkey library -->
+        <podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+            </config>
+            <pods use-frameworks="true">
+                <pod name="surveymonkey-ios-sdk" spec="~> 2.0"/>
+            </pods>
+        </podspec>
+    </platform>
 </plugin>
